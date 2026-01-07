@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h2 class="text-center mt-4"><u>PDA : Transfer Files System</u></h2>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <h2>Upload File</h2>
+      <form class="form-group" method=post enctype=multipart/form-data>
+        <input class="form-control-file" type=file name=file>
+        <br/>
+        <input class="btn" type=submit value=Submit>
+      </form>      
+    </div>
+    <div class="col">
+      {% if files %}
+        <a href="{{ url_for('download_all') }}" class="buttonDownloadAll mt-3">
+          📦 Download all files
+        </a>
+        <br/>
+      {% endif %}
+      <h2>Available Files:</h2>
+        <ul>
+        {% for file in files %}
+          <li><a href="/files/{{ file }}">{{ file }}</a></li>
+        {% else %}
+          <li>No files yet.</li>
+        {% endfor %}
+        </ul>
+    </div>
+  </div>
+
+  <p class="text-center ">Author: Manuel Portero Leiva</p>
+</div>
+
+{% endblock %}
