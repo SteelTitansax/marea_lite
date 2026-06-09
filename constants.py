@@ -275,7 +275,387 @@ import readline; readline.get_current_history_length() # Historial de comandos
 help(str) # Muestra ayuda de un objeto/comando
 import os; os.system('nano archivo.txt') # Editor de texto básico
 import os; os.system('vim archivo.txt') # Editor de texto avanzado            
-                """
+
+# PYTHON CHEAT SHEET
+
+============================================================
+
+1. ENTRADA Y SALIDA
+   ============================================================
+
++----------------------+--------------------------------------+-----------------------------------+
+| COMANDO              | DESCRIPCIÓN                          | EJEMPLO                           |
++----------------------+--------------------------------------+-----------------------------------+
+| input()              | Leer una línea                       | n = int(input())                  |
+| print()              | Mostrar resultado                    | print(n)                          |
+| split()              | Separar cadena                       | input().split()                   |
+| map()                | Aplicar conversión                   | map(int, input().split())         |
+| list()               | Convertir iterable a lista           | list(map(int, input().split()))   |
++----------------------+--------------------------------------+-----------------------------------+
+
+============================================================
+2. LISTAS
+=========
+
++----------------------+--------------------------------------+-----------------------------------+
+| COMANDO              | DESCRIPCIÓN                          | EJEMPLO                           |
++----------------------+--------------------------------------+-----------------------------------+
+| append(x)            | Añadir elemento                      | l.append(5)                       |
+| insert(i,x)          | Insertar en posición                 | l.insert(0,10)                    |
+| remove(x)            | Eliminar valor                       | l.remove(5)                       |
+| pop()                | Eliminar último                      | l.pop()                           |
+| pop(i)               | Eliminar posición                    | l.pop(2)                          |
+| reverse()            | Invertir lista                       | l.reverse()                       |
+| sort()               | Ordenar lista                        | l.sort()                          |
+| sorted()             | Ordenar sin modificar                | sorted(l)                         |
+| len()                | Tamaño                               | len(l)                            |
+| max()                | Mayor valor                          | max(l)                            |
+| min()                | Menor valor                          | min(l)                            |
+| sum()                | Suma total                           | sum(l)                            |
++----------------------+--------------------------------------+-----------------------------------+
+
+============================================================
+3. LIST COMPREHENSION
+=====================
+
+Crear lista
+
+[x for x in range(10)]
+
+Filtrar
+
+[x for x in nums if x > 0]
+
+Transformar
+
+[x*x for x in nums]
+
+Ejemplo:
+
+pares = [x for x in range(20) if x % 2 == 0]
+
+============================================================
+4. STRINGS
+==========
+
++----------------------+--------------------------------------+-----------------------------------+
+| COMANDO              | DESCRIPCIÓN                          | EJEMPLO                           |
++----------------------+--------------------------------------+-----------------------------------+
+| lower()              | Minúsculas                           | s.lower()                         |
+| upper()              | Mayúsculas                           | s.upper()                         |
+| capitalize()         | Primera letra mayúscula              | s.capitalize()                    |
+| replace()            | Reemplazar texto                     | s.replace("a","b")                |
+| find()               | Buscar posición                      | s.find("abc")                     |
+| count()              | Contar ocurrencias                   | s.count("a")                      |
+| split()              | Separar cadena                       | s.split()                         |
+| join()               | Unir lista                           | "-".join(lista)                   |
+| strip()              | Quitar espacios                      | s.strip()                         |
+| startswith()         | Empieza por                          | s.startswith("abc")               |
+| endswith()           | Termina por                          | s.endswith("xyz")                 |
++----------------------+--------------------------------------+-----------------------------------+
+
+============================================================
+5. DICCIONARIOS
+===============
+
++----------------------+--------------------------------------+-----------------------------------+
+| COMANDO              | DESCRIPCIÓN                          | EJEMPLO                           |
++----------------------+--------------------------------------+-----------------------------------+
+| dict()               | Crear diccionario                    | d = {}                            |
+| get()                | Obtener valor seguro                 | d.get("x",0)                      |
+| keys()               | Claves                               | d.keys()                          |
+| values()             | Valores                              | d.values()                        |
+| items()              | Clave y valor                        | d.items()                         |
++----------------------+--------------------------------------+-----------------------------------+
+
+Contador manual:
+
+freq = {}
+
+for x in lista:
+freq[x] = freq.get(x,0) + 1
+
+============================================================
+6. SETS
+=======
+
++----------------------+--------------------------------------+-----------------------------------+
+| COMANDO              | DESCRIPCIÓN                          | EJEMPLO                           |
++----------------------+--------------------------------------+-----------------------------------+
+| set()                | Crear conjunto                       | s = set(lista)                    |
+| add()                | Añadir elemento                      | s.add(5)                          |
+| remove()             | Eliminar elemento                    | s.remove(5)                       |
+| union()              | Unión                                | a.union(b)                        |
+| intersection()       | Intersección                         | a.intersection(b)                 |
+| difference()         | Diferencia                           | a.difference(b)                   |
+| symmetric_difference | Diferencia simétrica                 | a.symmetric_difference(b)         |
++----------------------+--------------------------------------+-----------------------------------+
+
+Eliminar duplicados:
+
+unicos = list(set(lista))
+
+============================================================
+7. FUNCIONES BUILT-IN
+=====================
+
++----------------------+--------------------------------------+-----------------------------------+
+| COMANDO              | DESCRIPCIÓN                          | EJEMPLO                           |
++----------------------+--------------------------------------+-----------------------------------+
+| len()                | Tamaño                               | len(lista)                        |
+| sum()                | Suma                                 | sum(lista)                        |
+| min()                | Mínimo                               | min(lista)                        |
+| max()                | Máximo                               | max(lista)                        |
+| abs()                | Valor absoluto                       | abs(-5)                           |
+| round()              | Redondear                            | round(5.67)                       |
+| bin()                | Binario                              | bin(10)                           |
+| oct()                | Octal                                | oct(10)                           |
+| hex()                | Hexadecimal                          | hex(10)                           |
++----------------------+--------------------------------------+-----------------------------------+
+
+============================================================
+8. ENUMERATE Y ZIP
+==================
+
+enumerate()
+
+for i, valor in enumerate(lista):
+print(i, valor)
+
+zip()
+
+for a, b in zip(lista1, lista2):
+print(a, b)
+
+============================================================
+9. LAMBDA
+=========
+
+Función anónima
+
+lambda x: x*x
+
+Ejemplo
+
+cuadrado = lambda x: x*x
+
+============================================================
+10. FILTER
+==========
+
+Filtrar elementos
+
+nums = [1,2,3,4,5]
+
+pares = list(
+filter(lambda x: x % 2 == 0, nums)
+)
+
+============================================================
+11. MAP
+=======
+
+Transformar elementos
+
+nums = [1,2,3]
+
+cuadrados = list(
+map(lambda x: x*x, nums)
+)
+
+============================================================
+12. SORTED CON KEY
+==================
+
+Ordenar por columna
+
+alumnos = [
+("Ana",20),
+("Luis",18)
+]
+
+sorted(alumnos, key=lambda x:x)
+
+Orden descendente
+
+sorted(alumnos,
+key=lambda x:x,
+reverse=True)
+
+============================================================
+13. ANY Y ALL
+=============
+
+Alguno cumple
+
+any(x > 0 for x in nums)
+
+Todos cumplen
+
+all(x > 0 for x in nums)
+
+============================================================
+14. COLLECTIONS
+===============
+
+from collections import Counter
+
+Contar elementos
+
+Counter("AAABBC")
+
+Resultado
+
+{
+'A':3,
+'B':2,
+'C':1
+}
+
+============================================================
+15. ITERTOOLS
+=============
+
+from itertools import product
+from itertools import permutations
+from itertools import combinations
+
+Producto cartesiano
+
+product(A,B)
+
+Permutaciones
+
+permutations("ABC",2)
+
+Combinaciones
+
+combinations("ABC",2)
+
+============================================================
+16. REGEX
+=========
+
+import re
+
++----------------------+--------------------------------------+-----------------------------------+
+| COMANDO              | DESCRIPCIÓN                          | EJEMPLO                           |
++----------------------+--------------------------------------+-----------------------------------+
+| re.match()           | Coincide desde inicio                | re.match(p,s)                     |
+| re.search()          | Buscar patrón                        | re.search(p,s)                    |
+| re.findall()         | Todas las coincidencias              | re.findall(p,s)                   |
+| re.sub()             | Sustituir patrón                     | re.sub(p,r,s)                     |
++----------------------+--------------------------------------+-----------------------------------+
+
+Patrones más usados
+
+\d      número
+\D      no número
+\w      letra o número
+\s      espacio
+^       inicio
+$       final
+
+* ```
+    uno o más
+  ```
+
+- ```
+    cero o más
+  ```
+
+?       opcional
+{n}     exactamente n
+
+Email válido
+
+r'^[\w-]+@[A-Za-z0-9]+.[A-Za-z]{1,3}$'
+
+============================================================
+17. EXCEPCIONES
+===============
+
+try:
+x = int(input())
+except ValueError:
+print("Error")
+
+============================================================
+18. NUMPY
+=========
+
+import numpy as np
+
+Crear array
+
+np.array([1,2,3])
+
+Cambiar forma
+
+arr.reshape(2,2)
+
+Transponer
+
+arr.transpose()
+
+Aplanar
+
+arr.flatten()
+
+Media
+
+np.mean(arr)
+
+Varianza
+
+np.var(arr)
+
+Desviación típica
+
+np.std(arr)
+
+============================================================
+19. TOP 20 COMANDOS MÁS USADOS EN HACKERRANK
+============================================
+
+input()
+print()
+split()
+map()
+list()
+set()
+dict()
+append()
+sort()
+sorted()
+len()
+sum()
+max()
+min()
+enumerate()
+zip()
+lambda
+filter()
+Counter()
+re.match()
+
+============================================================
+20. PLANTILLA BASE PARA EL 80% DE PROBLEMAS
+===========================================
+
+n = int(input())
+
+arr = list(
+map(int, input().split())
+)
+
+resultado = ...
+
+print(resultado)
+
+
+
+"""
 
 javascript_commands = """
             📦 JavaScript (Node.js)
@@ -325,7 +705,131 @@ console.log("texto") # Imprime texto
 execSync('man ls', {stdio:'inherit'}) # Muestra manual (Linux/macOS)
 execSync('nano archivo.txt', {stdio:'inherit'}) # Editor básico
 execSync('vim archivo.txt', {stdio:'inherit'}) # Editor avanzado
-            """
+
+HACKERRANK 10 DAYS OF JAVASCRIPT - COMMAND REFERENCE
+
+====================================================================================================
+| Exercise                          | Command / Feature           | Explanation                   |
+====================================================================================================
+| Day 0 - Hello World               | console.log()              | Prints output to the console. |
+| Example                           | console.log("Hello, World!");
+----------------------------------------------------------------------------------------------------
+| Day 0 - Data Types                | Number(), String(), +      | Converts and combines values. |
+| Example                           | let sum = Number(4) + 4;
+----------------------------------------------------------------------------------------------------
+| Day 1 - Arithmetic Operators      | +, -, *, /                | Basic arithmetic operations.  |
+| Example                           | let area = length * width;
+----------------------------------------------------------------------------------------------------
+| Day 1 - Functions                 | function                  | Defines reusable code blocks. |
+| Example                           | function factorial(n){ return n; }
+----------------------------------------------------------------------------------------------------
+| Day 1 - Let and Const             | let, const                | Block-scoped variables.       |
+| Example                           | const PI = 3.14; let r = 2;
+----------------------------------------------------------------------------------------------------
+| Day 2 - If-Else                   | if, else if, else         | Conditional execution.        |
+| Example                           | if(score > 25){ grade="A"; }
+----------------------------------------------------------------------------------------------------
+| Day 2 - Switch                    | switch                    | Handles multiple conditions.  |
+| Example                           | switch(day){ case 1: break; }
+----------------------------------------------------------------------------------------------------
+| Day 2 - Loops                     | for, while                | Repeats code execution.       |
+| Example                           | for(let i=0;i<5;i++){ console.log(i); }
+----------------------------------------------------------------------------------------------------
+| Day 3 - Arrays                    | [], length, index         | Stores collections of values. |
+| Example                           | let nums=[1,2,3]; nums[0];
+----------------------------------------------------------------------------------------------------
+| Day 3 - Try/Catch                 | try, catch, finally       | Handles runtime errors.       |
+| Example                           | try{ x(); } catch(err){ console.log(err); }
+----------------------------------------------------------------------------------------------------
+| Day 3 - Throw                     | throw                     | Creates custom exceptions.    |
+| Example                           | throw new Error("Invalid");
+----------------------------------------------------------------------------------------------------
+| Day 4 - Rectangle Object          | Object Literal            | Creates structured objects.   |
+| Example                           | let rect={length:4,width:5};
+----------------------------------------------------------------------------------------------------
+| Day 4 - Count Objects             | filter()                  | Filters array elements.       |
+| Example                           | arr.filter(x => x.x === x.y);
+----------------------------------------------------------------------------------------------------
+| Day 4 - Classes                   | class, constructor        | Creates object blueprints.    |
+| Example                           | class Polygon{ constructor(sides){} }
+----------------------------------------------------------------------------------------------------
+| Day 5 - Inheritance               | extends, super()          | Inherits from parent classes. |
+| Example                           | class Dog extends Animal{ super(); }
+----------------------------------------------------------------------------------------------------
+| Day 5 - Template Literals         | `${}`                     | Embeds values in strings.     |
+| Example                           | `Hello ${name}`
+----------------------------------------------------------------------------------------------------
+| Day 5 - Arrow Functions           | =>                        | Short function syntax.        |
+| Example                           | const square = x => x*x;
+----------------------------------------------------------------------------------------------------
+| Day 6 - Bitwise Operators         | &, |, ^, <<, >>          | Binary operations.            |
+| Example                           | let result = a & b;
+----------------------------------------------------------------------------------------------------
+| Day 6 - JavaScript Dates          | Date                      | Works with dates and times.   |
+| Example                           | let d = new Date();
+----------------------------------------------------------------------------------------------------
+| Day 7 - Regex I                   | RegExp, test()            | Pattern matching.             |
+| Example                           | /^[aeiou].*[aeiou]$/
+----------------------------------------------------------------------------------------------------
+| Day 7 - Regex II                  | Character Classes         | Matches character groups.     |
+| Example                           | /[a-zA-Z]/
+----------------------------------------------------------------------------------------------------
+| Day 7 - Regex III                 | Quantifiers               | Controls repetitions.         |
+| Example                           | /\d{3,}/
+----------------------------------------------------------------------------------------------------
+| Day 8 - Create a Button           | createElement()           | Creates HTML elements.        |
+| Example                           | document.createElement("button");
+----------------------------------------------------------------------------------------------------
+| Day 8 - Create a Button           | addEventListener()        | Handles user events.          |
+| Example                           | btn.addEventListener("click", fn);
+----------------------------------------------------------------------------------------------------
+| Day 8 - Buttons Container         | DOM Manipulation          | Updates page content.         |
+| Example                           | document.getElementById("btn").innerHTML++;
+----------------------------------------------------------------------------------------------------
+| Day 9 - Binary Calculator         | parseInt(), toString()    | Binary/decimal conversion.    |
+| Example                           | parseInt("101",2);
+----------------------------------------------------------------------------------------------------
+| Day 9 - Binary Calculator         | eval()                    | Evaluates expressions.        |
+| Example                           | eval("1+2");
+====================================================================================================
+
+MOST IMPORTANT JAVASCRIPT COMMANDS
+
+console.log()          -> Print output to console
+let                    -> Declare block-scoped variable
+const                  -> Declare constant variable
+var                    -> Declare function-scoped variable
+function               -> Create a function
+return                 -> Return a value from a function
+if / else              -> Conditional execution
+switch                 -> Multiple condition selection
+for                    -> Loop through iterations
+while                  -> Loop while condition is true
+[]                     -> Create arrays
+.length                -> Get array/string length
+.map()                 -> Transform array elements
+.filter()              -> Filter array elements
+.reduce()              -> Reduce array to a single value
+{}                     -> Create objects
+class                  -> Define classes
+constructor            -> Initialize class objects
+extends                -> Inherit from another class
+super()                -> Call parent constructor
+try / catch            -> Handle exceptions
+throw                  -> Raise exceptions
+Date                   -> Work with dates
+RegExp                 -> Regular expressions
+test()                 -> Test regex matches
+createElement()        -> Create DOM elements
+getElementById()       -> Select DOM elements
+addEventListener()     -> Listen for events
+parseInt()             -> Convert string to integer
+toString()             -> Convert value to string
+& | ^ << >>            -> Bitwise operators
+=>                     -> Arrow function syntax
+`${}`                  -> Template literals
+
+"""
 
 sql_commands ="""
             🗄 SQL (genérico)
@@ -364,7 +868,127 @@ SHOW TABLES; # Lista tablas
 DESCRIBE tabla; # Muestra estructura de tabla
 EXPLAIN SELECT ...; # Plan de ejecución
 EXIT; # Sale de la consola SQL
-            """
+
+Basic Select
+
+| Comando / Ejercicio          | Descripción                                     | Snippet                                                                  |
+| ---------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------ |
+| Revising the Select Query I  | Ciudades USA con población > 100000             | `SELECT * FROM CITY WHERE COUNTRYCODE='USA' AND POPULATION > 100000;`    |
+| Revising the Select Query II | Nombres de ciudades USA con población > 120000  | `SELECT NAME FROM CITY WHERE COUNTRYCODE='USA' AND POPULATION > 120000;` |
+| Select All                   | Devuelve todas las filas                        | `SELECT * FROM CITY;`                                                    |
+| Select By ID                 | Busca ciudad por ID                             | `SELECT * FROM CITY WHERE ID=1661;`                                      |
+| Japanese Cities' Attributes  | Todas las ciudades de Japón                     | `SELECT * FROM CITY WHERE COUNTRYCODE='JPN';`                            |
+| Japanese Cities' Names       | Nombre de ciudades japonesas                    | `SELECT NAME FROM CITY WHERE COUNTRYCODE='JPN';`                         |
+| Employee Salaries            | Empleados con salario >2000 y menos de 10 meses | `SELECT NAME FROM EMPLOYEE WHERE SALARY>2000 AND MONTHS<10;`             |
+| Higher Than 75 Marks         | Estudiantes con nota >75                        | `SELECT NAME FROM STUDENTS WHERE MARKS>75;`                              |
+
+Weather Observation Station
+
+| Ejercicio  | Descripción                         | Snippet                                           |
+| ---------- | ----------------------------------- | ------------------------------------------------- |
+| Station 1  | Ciudad y estado                     | `SELECT CITY, STATE FROM STATION;`                |
+| Station 3  | Ciudades únicas con ID par          | `SELECT DISTINCT CITY FROM STATION WHERE ID%2=0;` |
+| Station 4  | Diferencia entre total y únicos     | `SELECT COUNT(CITY)-COUNT(DISTINCT CITY);`        |
+| Station 5  | Ciudad más corta y más larga        | `ORDER BY LENGTH(CITY)`                           |
+| Station 6  | Empiezan por vocal                  | `WHERE CITY REGEXP '^[AEIOU]'`                    |
+| Station 7  | Terminan por vocal                  | `WHERE CITY REGEXP '[AEIOU]$'`                    |
+| Station 8  | Empiezan y terminan por vocal       | `WHERE CITY REGEXP '^[AEIOU].*[AEIOU]$'`          |
+| Station 9  | No empiezan por vocal               | `WHERE CITY NOT REGEXP '^[AEIOU]'`                |
+| Station 10 | No terminan por vocal               | `WHERE CITY NOT REGEXP '[AEIOU]$'`                |
+| Station 11 | No empiezan o no terminan por vocal | `NOT REGEXP`                                      |
+| Station 12 | No empiezan ni terminan por vocal   | `NOT REGEXP '^[AEIOU].*[AEIOU]$'`                 |
+| Station 13 | Suma de LAT_N en rango              | `SUM(LAT_N)`                                      |
+| Station 14 | Máximo LAT_N menor que valor        | `MAX(LAT_N)`                                      |
+| Station 15 | LONG_W asociado a LAT_N máximo      | Subconsulta                                       |
+| Station 16 | LAT_N mínimo superior a valor       | `MIN(LAT_N)`                                      |
+| Station 17 | LONG_W asociado a LAT_N mínimo      | Subconsulta                                       |
+| Station 18 | Distancia Manhattan                 | `ABS(MAX(LAT)-MIN(LAT))+ABS(MAX(LONG)-MIN(LONG))` |
+| Station 19 | Distancia Euclídea                  | `SQRT(POW(...))`                                  |
+| Station 20 | Mediana                             | `ROW_NUMBER()`                                    |
+
+
+Aggregation
+
+| Ejercicio                            | Descripción                        | Snippet                  |
+| ------------------------------------ | ---------------------------------- | ------------------------ |
+| Revising Aggregations Count Function | Cuenta ciudades >100000 habitantes | `SELECT COUNT(*)`        |
+| Revising Aggregations Sum Function   | Suma población California          | `SELECT SUM(POPULATION)` |
+| Revising Aggregations Average        | Promedio población California      | `SELECT AVG(POPULATION)` |
+| Average Population                   | Promedio mundial                   | `SELECT AVG(POPULATION)` |
+| Japan Population                     | Población total Japón              | `SELECT SUM(POPULATION)` |
+| Population Density Difference        | Diferencia entre máximo y mínimo   | `MAX()-MIN()`            |
+| Top Earners                          | Salario máximo generado            | `SALARY*MONTHS`          |
+
+
+Advanced Select
+
+| Ejercicio         | Descripción                 | Snippet                                   |
+| ----------------- | --------------------------- | ----------------------------------------- |
+| Type of Triangle  | Clasificación de triángulos | `CASE WHEN ... THEN ... END`              |
+| The PADS          | Formato Nombre(Ocupación)   | `CONCAT(NAME,'(',LEFT(OCCUPATION,1),')')` |
+| Occupations       | Pivotar ocupaciones         | `ROW_NUMBER() OVER()`                     |
+| Binary Tree Nodes | Root, Inner, Leaf           | `CASE WHEN P IS NULL THEN 'Root' ...`     |
+| New Companies     | Conteos jerárquicos         | `COUNT(DISTINCT ...)`                     |
+
+
+Basic Join
+
+| Ejercicio                            | Descripción             | Snippet                |
+| ------------------------------------ | ----------------------- | ---------------------- |
+| African Cities                       | Ciudades africanas      | `JOIN COUNTRY ON ...`  |
+| Average Population of Each Continent | Promedio por continente | `GROUP BY CONTINENT`   |
+| Population Census                    | Suma población Asia     | `JOIN + SUM()`         |
+| The Report                           | Notas y estudiantes     | `JOIN STUDENTS GRADES` |
+
+
+Advanced Join
+
+| Ejercicio            | Descripción                        | Snippet                 |
+| -------------------- | ---------------------------------- | ----------------------- |
+| Challenges           | Hackers con máximo número de retos | `GROUP BY HACKER_ID`    |
+| Contest Leaderboard  | Mejor puntuación por reto          | `MAX(SCORE)`            |
+| SQL Project Planning | Agrupar proyectos consecutivos     | `LEAD()`                |
+| Placements           | Comparación salarial               | `JOIN FRIENDS PACKAGES` |
+
+
+Parte B — Chuleta SQL de Comandos
+
+| Comando      | Descripción                | Ejemplo                                   |
+| ------------ | -------------------------- | ----------------------------------------- |
+| SELECT       | Seleccionar columnas       | `SELECT name FROM employee;`              |
+| DISTINCT     | Eliminar duplicados        | `SELECT DISTINCT city FROM station;`      |
+| WHERE        | Filtrar registros          | `WHERE population > 100000`               |
+| ORDER BY     | Ordenar resultados         | `ORDER BY salary DESC`                    |
+| LIMIT        | Limitar filas              | `LIMIT 10`                                |
+| GROUP BY     | Agrupar datos              | `GROUP BY department`                     |
+| HAVING       | Filtrar grupos             | `HAVING COUNT(*) > 5`                     |
+| COUNT()      | Contar registros           | `COUNT(*)`                                |
+| SUM()        | Sumar valores              | `SUM(salary)`                             |
+| AVG()        | Promedio                   | `AVG(salary)`                             |
+| MAX()        | Máximo                     | `MAX(salary)`                             |
+| MIN()        | Mínimo                     | `MIN(salary)`                             |
+| ROUND()      | Redondear                  | `ROUND(avg_salary,2)`                     |
+| CONCAT()     | Concatenar texto           | `CONCAT(name,'(',role,')')`               |
+| CASE         | Condicional SQL            | `CASE WHEN salary>5000 THEN 'Senior' END` |
+| INNER JOIN   | Unión interna              | `JOIN dept ON emp.dept_id=dept.id`        |
+| LEFT JOIN    | Mantiene tabla izquierda   | `LEFT JOIN orders`                        |
+| RIGHT JOIN   | Mantiene tabla derecha     | `RIGHT JOIN orders`                       |
+| UNION        | Une resultados             | `SELECT ... UNION SELECT ...`             |
+| UNION ALL    | Une manteniendo duplicados | `UNION ALL`                               |
+| EXISTS       | Verifica existencia        | `WHERE EXISTS (...)`                      |
+| IN           | Lista de valores           | `WHERE city IN ('Madrid','Paris')`        |
+| BETWEEN      | Rango                      | `WHERE salary BETWEEN 1000 AND 5000`      |
+| LIKE         | Búsqueda por patrón        | `WHERE name LIKE 'A%'`                    |
+| REGEXP       | Expresiones regulares      | `WHERE city REGEXP '^[AEIOU]'`            |
+| ROW_NUMBER() | Numeración secuencial      | `ROW_NUMBER() OVER(ORDER BY salary)`      |
+| RANK()       | Ranking con empates        | `RANK() OVER()`                           |
+| DENSE_RANK() | Ranking continuo           | `DENSE_RANK() OVER()`                     |
+| LEAD()       | Siguiente fila             | `LEAD(salary)`                            |
+| LAG()        | Fila anterior              | `LAG(salary)`                             |
+| CTE (WITH)   | Tabla temporal             | `WITH cte AS (...) SELECT * FROM cte;`    |
+| Subquery     | Consulta anidada           | `WHERE salary > (SELECT AVG(...))`        |
+
+"""
 
 
 # Software packages
